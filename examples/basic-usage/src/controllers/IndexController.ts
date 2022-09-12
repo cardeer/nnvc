@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from "nnvc2";
+import { Body, Controller, Get, Param, Post, Query } from "nnvc2";
 import { DB } from "nnvc2/database";
 
 @Controller("/")
@@ -10,8 +10,14 @@ export class IndexController {
     @Query query: any[]
   ) {
     return {
-      msg: "pong " + message + " and message 2 is " + message2,
+      message,
+      message2,
       query,
     };
+  }
+
+  @Post("/test-body")
+  public async testPost(@Body body: any) {
+    return body;
   }
 }

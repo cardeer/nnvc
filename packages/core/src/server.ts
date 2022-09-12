@@ -11,9 +11,12 @@ export class Server {
   private _app: express.Application;
   private _server: HttpServer | null = null;
   protected port: number = 3000;
+  protected initDB: boolean = true;
 
   constructor() {
-    initConnection();
+    if (this.initDB) {
+      initConnection();
+    }
 
     this._app = express();
 

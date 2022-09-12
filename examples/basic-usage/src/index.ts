@@ -3,6 +3,7 @@ import { IndexController } from "./controllers/IndexController";
 
 class ApplicationServer extends Server {
   protected port: number = 3000;
+  protected initDB: boolean = false;
 
   constructor() {
     super();

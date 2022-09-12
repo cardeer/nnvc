@@ -6,6 +6,7 @@ import { IRequestParam } from "../@types/param";
 import bindRequestParams from "./bindings/bindRequestParams";
 import bindRequestQueries from "./bindings/bindRequestQueries";
 import bindRequestBody from "./bindings/bindRequestBody";
+import { HttpMethod } from "src/@types/http";
 
 export default function createRouter(
   router: Router,
@@ -35,13 +36,11 @@ export default function createRouter(
 
   const paramsList: any[] = [];
 
-  if (request.method === "get") {
-    router.get(request.path, async (req, res) => {
-      bindRequestParams(paramsList, params, req);
-      bindRequestQueries(paramsList, queryIndex, req);
-      bindRequestBody(paramsList, bodyIndex, req);
+  router[request.method as HttpMethod](request.path, async (req, res) => {
+    bindRequestParams(paramsList, params, req);
+    bindRequestQueries(paramsList, queryIndex, req);
+    bindRequestBody(paramsList, bodyIndex, req);
 
-      res.send(await value.call(newTarget, ...paramsList));
-    });
-  }
+    res.send(await value.call(newTarget, ...paramsList));
+  });
 }
