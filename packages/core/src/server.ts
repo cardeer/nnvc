@@ -1,7 +1,11 @@
+import dotenv from "dotenv";
 import express from "express";
 import chalk from "chalk";
 import { Server as HttpServer } from "http";
 import { IController } from "./@types/controller";
+import initConnection from "./database";
+
+dotenv.config();
 
 export class Server {
   private _app: express.Application;
@@ -9,6 +13,8 @@ export class Server {
   protected port: number = 3000;
 
   constructor() {
+    initConnection();
+
     this._app = express();
 
     this._app.use(express.json());

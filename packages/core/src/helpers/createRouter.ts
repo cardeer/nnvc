@@ -36,12 +36,12 @@ export default function createRouter(
   const paramsList: any[] = [];
 
   if (request.method === "get") {
-    router.get(request.path, (req, res) => {
+    router.get(request.path, async (req, res) => {
       bindRequestParams(paramsList, params, req);
       bindRequestQueries(paramsList, queryIndex, req);
       bindRequestBody(paramsList, bodyIndex, req);
 
-      res.send(value.call(newTarget, ...paramsList));
+      res.send(await value.call(newTarget, ...paramsList));
     });
   }
 }
