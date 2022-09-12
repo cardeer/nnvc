@@ -1,0 +1,30 @@
+{
+  "name": "nnvc2",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Siwakorn <cardeer.dev@gmail.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com",
+    "directory": "./dist"
+  },
+  "scripts": {
+    "build": "tsc && cp package.json dist"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "reflect-metadata": "^0.1.13"
+  }
+}

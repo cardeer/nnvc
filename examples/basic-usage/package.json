@@ -1,0 +1,12 @@
+{
+  "name": "basic-nnvc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "nnvc2": "*"
+  },
+  "scripts": {
+    "exdev": "nodemon --watch src --exec 'ts-node src/index.ts'"
+  }
+}
