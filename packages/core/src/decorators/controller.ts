@@ -1,12 +1,11 @@
 import { Router } from "express";
 import "reflect-metadata";
-import { IController } from "../@types/controller";
 import { IRequestMetadata } from "../@types/request";
 import createRouter from "../helpers/createRouter";
 import { RequestKey } from "./keys";
 
 export function Controller(path: string) {
-  return function Controller<T extends { new (...args: any[]): IController }>(
+  return function Controller<T extends { new (...args: any[]): {} }>(
     constructor: T
   ) {
     const target = constructor.prototype;

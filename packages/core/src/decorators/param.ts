@@ -1,4 +1,4 @@
-import { IRequestParam } from "../@types/param";
+import { IRequestParam } from "../@types/request";
 import appendMetadata from "../helpers/appendMetadata";
 import { ParamKey } from "./keys";
 

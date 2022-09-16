@@ -2,8 +2,9 @@ import dotenv from "dotenv";
 import express from "express";
 import chalk from "chalk";
 import { Server as HttpServer } from "http";
-import { IController } from "./@types/controller";
-import initConnection from "./database";
+import initConnection from "../database";
+import { TemplateEngine } from "../@types/server";
+import setupLiquidJsTemplateEngine from "./templateEngines/liquidjs";
 
 dotenv.config();
 
@@ -13,12 +14,18 @@ export class Server {
   protected port: number = 3000;
   protected initDB: boolean = true;
 
+  protected templateEngine: TemplateEngine = "liquidjs";
+
   constructor() {
     if (this.initDB) {
       initConnection();
     }
 
     this._app = express();
+
+    if (this.templateEngine === "liquidjs") {
+      setupLiquidJsTemplateEngine(this._app);
+    }
 
     this._app.use(express.json());
     this._app.use(express.urlencoded({ extended: true }));
@@ -43,9 +50,7 @@ export class Server {
     });
   }
 
-  protected register<T extends { new (...args: any[]): IController }>(
-    controller: T
-  ) {
+  protected register(controller: any) {
     this._app.use(new controller().router!);
   }
 }

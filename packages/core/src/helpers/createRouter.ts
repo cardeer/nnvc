@@ -8,11 +8,11 @@ import {
   StatusKey,
   ViewKey,
 } from "../decorators/keys";
-import { IRequestParam } from "../@types/param";
+import { IRequestParam } from "../@types/request";
 import bindRequestParams from "./bindings/bindRequestParams";
 import bindRequestQueries from "./bindings/bindRequestQueries";
 import bindRequestBody from "./bindings/bindRequestBody";
-import { HttpMethod } from "src/@types/http";
+import { HttpMethod } from "../@types/http";
 
 export default function createRouter(
   router: Router,
@@ -60,9 +60,9 @@ export default function createRouter(
     bindRequestBody(paramsList, bodyIndex, req);
 
     if (view !== undefined) {
-      res.status(status || 200).render(view.page || "index", {
-        title: view.title || "Document",
-      });
+      res
+        .status(status || 200)
+        .render(view.page, await value.call(newTarget, ...paramsList));
     } else {
       res
         .status(status || 200)

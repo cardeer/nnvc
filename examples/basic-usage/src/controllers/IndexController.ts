@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, Status } from "nnvc2";
+import { Body, Controller, Get, Param, Post, Query, Status, View } from "nnvc2";
 import { DB } from "nnvc2/database";
 
 @Controller("/")
@@ -20,5 +20,16 @@ export class IndexController {
   @Post("/test-body")
   public async testPost(@Body body: any) {
     return body;
+  }
+
+  @Get("/test-page")
+  @Status(200)
+  @View({
+    page: "index",
+  })
+  public async testPage() {
+    return {
+      message: "hello, world",
+    };
   }
 }

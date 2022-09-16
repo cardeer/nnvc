@@ -5,15 +5,19 @@ export interface IRequestMetadata {
   descriptor: PropertyDescriptor;
 }
 
-export type RequestParams = {
+export interface IRequestParam {
+  name: string;
+  index: number;
+}
+
+type ObjectMap = {
   [key: string]: string;
 };
 
-export type RequestQueries = {
-  [key: string]: string;
-};
+export type RequestParams = ObjectMap;
+
+export type RequestQueries = ObjectMap;
 
 export interface IRequestView {
-  title?: string;
-  page?: string;
+  page: string;
 }

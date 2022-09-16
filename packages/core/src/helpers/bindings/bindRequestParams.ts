@@ -1,5 +1,4 @@
-import { RequestParams } from "../../@types/request";
-import { IRequestParam } from "../../@types/param";
+import { RequestParams, IRequestParam } from "../../@types/request";
 import { Request } from "express";
 
 export default function bindRequestParams(
