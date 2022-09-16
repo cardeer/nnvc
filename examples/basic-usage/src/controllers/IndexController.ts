@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, Post, Query } from "nnvc2";
+import { Body, Controller, Get, Param, Post, Query, Status } from "nnvc2";
 import { DB } from "nnvc2/database";
 
 @Controller("/")
 export class IndexController {
   @Get("/ping/:message/:message2")
+  @Status(200)
   public async ping(
     @Param("message2") message2: string,
     @Param("message") message: string,

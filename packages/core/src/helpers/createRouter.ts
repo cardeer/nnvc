@@ -1,7 +1,13 @@
 import "reflect-metadata";
 import { Router } from "express";
-import { IRequestMetadata } from "../@types/request";
-import { BodyKey, ParamKey, QueryKey } from "../decorators/keys";
+import { IRequestMetadata, IRequestView } from "../@types/request";
+import {
+  BodyKey,
+  ParamKey,
+  QueryKey,
+  StatusKey,
+  ViewKey,
+} from "../decorators/keys";
 import { IRequestParam } from "../@types/param";
 import bindRequestParams from "./bindings/bindRequestParams";
 import bindRequestQueries from "./bindings/bindRequestQueries";
@@ -34,6 +40,18 @@ export default function createRouter(
     request.name
   );
 
+  const view: IRequestView = Reflect.getOwnMetadata(
+    ViewKey,
+    target,
+    request.name
+  );
+
+  const status: number = Reflect.getOwnMetadata(
+    StatusKey,
+    target,
+    request.name
+  );
+
   const paramsList: any[] = [];
 
   router[request.method as HttpMethod](request.path, async (req, res) => {
@@ -41,6 +59,14 @@ export default function createRouter(
     bindRequestQueries(paramsList, queryIndex, req);
     bindRequestBody(paramsList, bodyIndex, req);
 
-    res.send(await value.call(newTarget, ...paramsList));
+    if (view !== undefined) {
+      res.status(status || 200).render(view.page || "index", {
+        title: view.title || "Document",
+      });
+    } else {
+      res
+        .status(status || 200)
+        .json(await value.call(newTarget, ...paramsList));
+    }
   });
 }

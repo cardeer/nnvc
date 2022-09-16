@@ -12,3 +12,8 @@ export type RequestParams = {
 export type RequestQueries = {
   [key: string]: string;
 };
+
+export interface IRequestView {
+  title?: string;
+  page?: string;
+}
