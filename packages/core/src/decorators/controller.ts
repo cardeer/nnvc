@@ -1,5 +1,5 @@
-import { Router } from "express";
 import "reflect-metadata";
+import { Router } from "express";
 import { IRequestMetadata } from "../@types/request";
 import createRouter from "../helpers/createRouter";
 import { RequestKey } from "./keys";

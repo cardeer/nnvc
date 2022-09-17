@@ -5,15 +5,16 @@ import { Server as HttpServer } from "http";
 import initConnection from "../database";
 import { TemplateEngine } from "../@types/server";
 import setupLiquidJsTemplateEngine from "./templateEngines/liquidjs";
+import { IController } from "src/@types/controller";
 
 dotenv.config();
 
 export class Server {
   private _app: express.Application;
-  private _server: HttpServer | null = null;
+  private _server: HttpServer | undefined;
+
   protected port: number = 3000;
   protected initDB: boolean = true;
-
   protected templateEngine: TemplateEngine = "liquidjs";
 
   constructor() {
@@ -23,8 +24,10 @@ export class Server {
 
     this._app = express();
 
-    if (this.templateEngine === "liquidjs") {
-      setupLiquidJsTemplateEngine(this._app);
+    switch (this.templateEngine) {
+      case "liquidjs":
+        setupLiquidJsTemplateEngine(this._app);
+        break;
     }
 
     this._app.use(express.json());
@@ -51,6 +54,9 @@ export class Server {
   }
 
   protected register(controller: any) {
-    this._app.use(new controller().router!);
+    const decoratedController = controller as {
+      new (...args: any[]): IController;
+    };
+    this._app.use(new decoratedController().router);
   }
 }
