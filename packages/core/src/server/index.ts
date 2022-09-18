@@ -5,7 +5,7 @@ import { Server as HttpServer } from "http";
 import initConnection from "../database";
 import { TemplateEngine } from "../@types/server";
 import setupLiquidJsTemplateEngine from "./templateEngines/liquidjs";
-import { IController } from "src/@types/controller";
+import { IController } from "../@types/controller";
 
 dotenv.config();
 
