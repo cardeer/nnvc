@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "nnvc2": "*",
+    "nnvc": "*",
     "pg": "^8.8.0"
   },
   "scripts": {

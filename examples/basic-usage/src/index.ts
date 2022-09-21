@@ -1,4 +1,4 @@
-import { Server } from "nnvc2/server";
+import { Server } from "nnvc/server";
 import { IndexController } from "./controllers/IndexController";
 
 class ApplicationServer extends Server {
