@@ -38,7 +38,7 @@ export class Server {
   }
 
   protected onStop() {
-    this._server?.close((err) => {
+    this._server!.close((err) => {
       if (err) {
         console.log(chalk.red(`Error closing server: ${err.message}`));
       } else {
