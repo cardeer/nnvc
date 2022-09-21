@@ -5,5 +5,8 @@
     "packages/*",
     "examples/*"
   ],
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "devDependencies": {
+    "lerna": "^5.5.1"
+  }
 }
