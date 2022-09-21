@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query, Status, View } from "nnvc2";
 import { DB } from "nnvc2/database";
 
-@Controller("/")
+@Controller("/api")
 export class IndexController {
   @Get("/ping/:message/:message2")
   @Status(200)
@@ -31,5 +31,10 @@ export class IndexController {
     return {
       message: "hello, world",
     };
+  }
+
+  @Get("/dis")
+  public async getDis() {
+    return "dis";
   }
 }

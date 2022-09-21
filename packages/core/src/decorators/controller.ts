@@ -16,6 +16,7 @@ export function Controller(path: string) {
 
     return class extends constructor {
       public router: Router = Router();
+      public path: string = path;
 
       constructor(...args: any[]) {
         super(...args);

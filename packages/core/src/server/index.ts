@@ -34,6 +34,7 @@ export class Server {
     this._app.use(express.urlencoded({ extended: true }));
 
     process.on("SIGINT", this.onStop);
+    process.on("SIGTERM", this.onStop);
   }
 
   protected onStop() {
@@ -42,6 +43,7 @@ export class Server {
         console.log(chalk.red(`Error closing server: ${err.message}`));
       } else {
         console.log(chalk.red(`Server stopped`));
+        this._server = undefined;
       }
     });
   }
@@ -54,9 +56,12 @@ export class Server {
   }
 
   protected register(controller: any) {
-    const decoratedController = controller as {
+    const castedController = controller as {
       new (...args: any[]): IController;
     };
-    this._app.use(new decoratedController().router);
+
+    const controllerInstance = new castedController();
+
+    this._app.use(controllerInstance.path, controllerInstance.router);
   }
 }
