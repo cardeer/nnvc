@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Post, Query, Status, View } from "nnvc2";
-import { DB } from "nnvc2/database";
+import { Body, Controller, Get, Param, Post, Query, Status, View } from "nnvc";
+import { DB } from "nnvc/database";
 
 @Controller("/api")
 export class IndexController {
