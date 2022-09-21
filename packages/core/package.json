@@ -5,7 +5,7 @@
   "author": "Siwakorn <cardeer.dev@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "lib/core.js",
+  "main": "index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "directory": "./dist"
