@@ -10,5 +10,8 @@
   },
   "scripts": {
     "exdev": "nodemon --watch src --ext ts,json --exec 'ts-node src/index.ts'"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.5"
   }
 }

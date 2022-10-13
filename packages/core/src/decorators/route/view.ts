@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { IRequestView } from '@/@types/request'
-import { ViewKey } from './keys'
+import { ViewKey } from '../keys'
 
 export function View(options: IRequestView) {
   return function (

@@ -1,5 +1,5 @@
-import "reflect-metadata";
-import { StatusKey } from "./keys";
+import 'reflect-metadata'
+import { StatusKey } from '../keys'
 
 export function Status(status: number) {
   return function (
@@ -7,6 +7,6 @@ export function Status(status: number) {
     propertyKey: string,
     descriptor: PropertyDescriptor
   ) {
-    Reflect.defineMetadata(StatusKey, status, target, propertyKey);
-  };
+    Reflect.defineMetadata(StatusKey, status, target, propertyKey)
+  }
 }

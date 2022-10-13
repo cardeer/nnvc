@@ -1,6 +1,6 @@
 import { IRequestParam } from '@/@types/request'
 import appendMetadata from '@/helpers/appendMetadata'
-import { ParamKey } from './keys'
+import { ParamKey } from '../keys'
 
 export function Param(name: string) {
   return function (target: Object, propertyKey: string, paramIndex: number) {

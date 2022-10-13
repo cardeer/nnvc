@@ -1,8 +1,13 @@
 import 'reflect-metadata'
 import { Router } from 'express'
-import { IRequestMetadata, IRequestView } from '@/@types/request'
+import {
+  IRequestHeaderParam,
+  IRequestMetadata,
+  IRequestView,
+} from '@/@types/request'
 import {
   BodyKey,
+  HeaderKey,
   ParamKey,
   QueryKey,
   StatusKey,
@@ -13,6 +18,7 @@ import bindRequestParams from './bindings/bindRequestParams'
 import bindRequestQueries from './bindings/bindRequestQueries'
 import bindRequestBody from './bindings/bindRequestBody'
 import { HttpMethod } from '@/@types/http'
+import bindRequestHeaders from './bindings/bindRequestHeader'
 
 export default function createRouter(
   router: Router,
@@ -24,6 +30,12 @@ export default function createRouter(
 
   const params: IRequestParam[] = Reflect.getOwnMetadata(
     ParamKey,
+    target,
+    request.name
+  )
+
+  const headerParams: IRequestHeaderParam[] = Reflect.getOwnMetadata(
+    HeaderKey,
     target,
     request.name
   )
@@ -52,6 +64,7 @@ export default function createRouter(
 
   router[request.method as HttpMethod](request.path, async (req, res) => {
     bindRequestParams(paramsList, params, req)
+    bindRequestHeaders(paramsList, headerParams, req)
     bindRequestQueries(paramsList, queryIndex, req)
     bindRequestBody(paramsList, bodyIndex, req)
 

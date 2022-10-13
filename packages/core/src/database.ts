@@ -1,12 +1,12 @@
-import knex, { Knex } from "knex";
+import knex, { Knex } from 'knex'
 
 export class DB {
-  static connection: Knex;
+  static instance: Knex
 }
 
 export default function initConnection() {
   try {
-    DB.connection = knex({
+    DB.instance = knex({
       client: process.env.DB_CLIENT,
       connection: {
         host: process.env.DB_HOST,
@@ -15,8 +15,8 @@ export default function initConnection() {
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
       },
-    });
+    })
   } catch (e) {
-    console.log(`Error when create connection: ${e}`);
+    console.log(`Error when create connection: ${e}`)
   }
 }
