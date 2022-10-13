@@ -1,6 +1,6 @@
 {
   "name": "nnvc",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "An MVC library",
   "author": "Siwakorn <cardeer.dev@gmail.com>",
   "homepage": "https://github.com/cardeer/nnvc",
@@ -15,7 +15,7 @@
     "directory": "./dist"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc && tsc-alias && cp package.json dist && rm ./dist/@types/*.{js,js.map}"
+    "build": "rm -rf dist && tsc && tsc-alias && cp package.json dist && rm ./dist/@types/*.{js,js.map} && cp ../../README.md ./dist"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
