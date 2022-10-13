@@ -7,7 +7,7 @@ This library only supports TypeScript.
 Using npm
 
 ```bash
-npm install nnvc
+npm install nnvc --save
 ```
 
 Using yarn
