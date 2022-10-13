@@ -24,7 +24,7 @@ Add this script in your package.json
 
 ```json
 {
-  "dev": nodemon --watch src --ext ts,json --exec 'ts-node src/index.ts'
+  "dev": "nodemon --watch src --ext ts,json --exec 'ts-node src/index.ts'"
 }
 ```
 
