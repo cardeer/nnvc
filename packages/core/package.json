@@ -3,7 +3,11 @@
   "version": "1.4.0",
   "description": "An MVC library",
   "author": "Siwakorn <cardeer.dev@gmail.com>",
-  "homepage": "",
+  "homepage": "https://github.com/cardeer/nnvc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cardeer/nnvc"
+  },
   "license": "MIT",
   "main": "index.js",
   "publishConfig": {
