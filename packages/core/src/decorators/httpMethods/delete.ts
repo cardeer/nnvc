@@ -1,6 +1,6 @@
-import { IRequestMetadata } from "../../@types/request";
-import appendMetadata from "../../helpers/appendMetadata";
-import { RequestKey } from "../keys";
+import { IRequestMetadata } from '@/@types/request'
+import appendMetadata from '@/helpers/appendMetadata'
+import { RequestKey } from '../keys'
 
 export function Delete(path: string) {
   return function (
@@ -12,11 +12,11 @@ export function Delete(path: string) {
       RequestKey,
       {
         name: propertyKey,
-        method: "delete",
+        method: 'delete',
         path,
         descriptor,
       },
       target
-    );
-  };
+    )
+  }
 }

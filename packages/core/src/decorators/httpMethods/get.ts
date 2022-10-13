@@ -1,6 +1,6 @@
-import { IRequestMetadata } from "../../@types/request";
-import appendMetadata from "../../helpers/appendMetadata";
-import { RequestKey } from "../keys";
+import { IRequestMetadata } from '@/@types/request'
+import appendMetadata from '@/helpers/appendMetadata'
+import { RequestKey } from '../keys'
 
 export function Get(path: string) {
   return function (
@@ -12,11 +12,11 @@ export function Get(path: string) {
       RequestKey,
       {
         name: propertyKey,
-        method: "get",
+        method: 'get',
         path,
         descriptor,
       },
       target
-    );
-  };
+    )
+  }
 }

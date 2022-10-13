@@ -1,6 +1,6 @@
-import { IRequestMetadata } from "../../@types/request";
-import appendMetadata from "../../helpers/appendMetadata";
-import { RequestKey } from "../keys";
+import { IRequestMetadata } from '@/@types/request'
+import appendMetadata from '@/helpers/appendMetadata'
+import { RequestKey } from '../keys'
 
 export function Post(path: string) {
   return function (
@@ -12,11 +12,11 @@ export function Post(path: string) {
       RequestKey,
       {
         name: propertyKey,
-        method: "post",
+        method: 'post',
         path,
         descriptor,
       },
       target
-    );
-  };
+    )
+  }
 }

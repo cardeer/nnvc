@@ -1,16 +1,16 @@
-import { Server } from "nnvc/server";
-import { IndexController } from "./controllers/IndexController";
+import { Server } from 'nnvc/server'
+import { IndexController } from './controllers/IndexController'
 
 class ApplicationServer extends Server {
-  protected port: number = 3000;
-  protected initDB: boolean = false;
+  protected port: number = 3000
+  protected initDB: boolean = false
 
   constructor() {
-    super();
+    super()
 
-    this.register(IndexController);
+    this.register(IndexController)
   }
 }
 
-const app = new ApplicationServer();
-app.start();
+const app = new ApplicationServer()
+app.start()

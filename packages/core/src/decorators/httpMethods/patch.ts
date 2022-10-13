@@ -1,6 +1,6 @@
-import { IRequestMetadata } from "../../@types/request";
-import appendMetadata from "../../helpers/appendMetadata";
-import { RequestKey } from "../keys";
+import { IRequestMetadata } from '@/@types/request'
+import appendMetadata from '@/helpers/appendMetadata'
+import { RequestKey } from '../keys'
 
 export function Patch(path: string) {
   return function (
@@ -12,11 +12,11 @@ export function Patch(path: string) {
       RequestKey,
       {
         name: propertyKey,
-        method: "patch",
+        method: 'patch',
         path,
         descriptor,
       },
       target
-    );
-  };
+    )
+  }
 }

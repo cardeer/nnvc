@@ -1,6 +1,6 @@
-import "reflect-metadata";
-import { IRequestView } from "../@types/request";
-import { ViewKey } from "./keys";
+import 'reflect-metadata'
+import { IRequestView } from '@/@types/request'
+import { ViewKey } from './keys'
 
 export function View(options: IRequestView) {
   return function (
@@ -8,6 +8,6 @@ export function View(options: IRequestView) {
     propertyKey: string,
     descriptor: PropertyDescriptor
   ) {
-    Reflect.defineMetadata(ViewKey, options, target, propertyKey);
-  };
+    Reflect.defineMetadata(ViewKey, options, target, propertyKey)
+  }
 }

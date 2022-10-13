@@ -11,11 +11,12 @@
     "directory": "./dist"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc && cp package.json dist && cp -r src/@types ./dist"
+    "build": "rm -rf dist && tsc && tsc-alias && cp package.json dist && cp -r src/@types ./dist"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^18.7.16"
+    "@types/node": "^18.7.16",
+    "tsc-alias": "^1.7.0"
   },
   "dependencies": {
     "chalk": "4.1.2",
